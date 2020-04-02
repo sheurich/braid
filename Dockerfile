@@ -1,12 +1,10 @@
-FROM ruby:2.4
+FROM ruby:2.7.1-buster
 
-MAINTAINER thinkbot@outlook.de
+ENV VERSION=1.1.3
 
-ENV VERSION=1.0.8
+RUN gem install braid --version ${VERSION}
 
-RUN gem install braid --version ${VERSION} --no-format-exec
-
-WORKDIR /tmp
+WORKDIR /w
 
 ENTRYPOINT ["braid"]
 CMD ["--help"]
